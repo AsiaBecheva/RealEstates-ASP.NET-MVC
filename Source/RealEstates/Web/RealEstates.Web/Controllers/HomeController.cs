@@ -1,16 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using AutoMapper.QueryableExtensions;
+using RealEstates.Data.Common.Repositories;
+using RealEstates.Data.Models;
+using RealEstates.Web.Models;
 using System.Web.Mvc;
 
 namespace RealEstates.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private IDeletableEntityRepository<Property> properties;
+
+        public HomeController(IDeletableEntityRepository<Property> properties)
+        {
+            this.properties = properties;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var posts = this.properties.All().ProjectTo<PropertyViewModel>();
+            return View(posts);
         }
 
         public ActionResult About()

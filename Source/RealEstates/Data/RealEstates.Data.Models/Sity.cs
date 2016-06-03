@@ -2,11 +2,12 @@
 {
     public enum Sity
     {
-        Sofiq = 0,
-        Plovdiv = 1,
-        Varna = 2,
-        Burgas = 3,
-        Pazardjik = 4,
-        Ruse = 5
+        All = 0,
+        Sofiq = 1,
+        Plovdiv = 2,
+        Varna = 3,
+        Burgas = 4,
+        Pazardjik = 5,
+        Ruse = 6
     }
 }

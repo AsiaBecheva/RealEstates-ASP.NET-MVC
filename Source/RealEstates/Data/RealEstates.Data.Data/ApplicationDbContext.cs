@@ -16,6 +16,14 @@
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
+        public virtual IDbSet<Property> Properties { get; set; }
+
+        public virtual IDbSet<Image> Images { get; set; }
+
+        public virtual IDbSet<Message> Messages { get; set; }
+
+        public virtual IDbSet<Post> Posts { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

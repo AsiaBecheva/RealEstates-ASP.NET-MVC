@@ -4,7 +4,6 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
     using Common.Models;
     using System;
     using System.ComponentModel.DataAnnotations.Schema;
