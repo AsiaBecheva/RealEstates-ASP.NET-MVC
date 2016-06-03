@@ -3,7 +3,7 @@
     public enum Sity
     {
         All = 0,
-        Sofiq = 1,
+        Sofia = 1,
         Plovdiv = 2,
         Varna = 3,
         Burgas = 4,

@@ -22,8 +22,6 @@
 
         public virtual IDbSet<Message> Messages { get; set; }
 
-        public virtual IDbSet<Post> Posts { get; set; }
-
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

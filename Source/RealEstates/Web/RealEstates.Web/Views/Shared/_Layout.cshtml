@@ -9,26 +9,40 @@
 
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="row">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav col-md-5">
+                        <div class="dropdown">
+                            <li class="dropbtn">@Html.ActionLink("Home", "Index", "Home")</li>
+                        </div>
+                        <div class="dropdown">
+                            <li class="dropbtn">@Html.ActionLink("About", "About", "Home")</li>
+                        </div>
+                        <div class="dropdown">
+                            <li class="dropbtn">@Html.ActionLink("Properties", "Contact", "Home")</li>
+                            <div class="dropdown-content">
+                                <a href="#">blabla</a>
+                                <a href="#">miamia</a>
+                                <a href="#">bumbam</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <li class="dropbtn">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </div>
+                    </ul>
+                    <div class="col-md-2">
+                        <div class="inner-addon left-addon">
+                            <i class="glyphicon glyphicon-search"></i>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />

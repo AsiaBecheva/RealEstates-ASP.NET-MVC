@@ -1,0 +1,144 @@
+body {
+    background-color:ghostwhite;
+    background-size: 100%;
+    height: 140px;
+    display: block;
+    padding: 0 !important;
+    margin: 0;
+}
+
+#logo {
+    width: 160px;
+}
+
+
+nav {
+    z-index: 1;
+}
+
+#inscription {
+    font-family: 'Lobster', cursive;
+    color: antiquewhite;
+    font-size: 40px;
+}
+
+.navbar {
+    margin: 10px;
+    opacity: 0.8;
+    font-size: 1.4em;
+    font-family:'Times New Roman';
+    background-color:lightgreen
+}
+
+.dropbtn {
+    padding: 5px 20px 5px 20px;
+    border: none;
+    background-color:lightgreen;
+    margin-left:10px;
+}
+
+.dropbtn:hover {
+    background-color:palegreen;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:palegreen;
+    min-width: 60px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 9px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #93A0FF;
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.background-white {
+    background-color: white;
+    width: 70%;
+    margin-left: 200px;
+}
+
+.map {
+    margin-left: 50px;
+}
+
+.info {
+    padding: 30px;
+    margin-left: 50px;
+}
+
+.login {
+    margin-top: 5px;
+    float: right;
+}
+
+.register {
+     margin-top: 5px;
+}
+
+#search {
+     margin-top: 25px;
+     border-radius: 5px;
+}
+
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.form-control {
+    margin-top: 13px;
+    width: 270px;
+}
+
+#form-contact {
+    margin-left: 55px;
+}
+
+.about {
+    width: 60%;
+    height: 700px;
+    background-color: white;
+}
+
+.about-text {
+    font-size: 20px;
+    font-family: Cambria, Georgia, serif;
+    padding-top: 40px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color:black;
+}
