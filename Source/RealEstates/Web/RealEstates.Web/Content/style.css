@@ -27,7 +27,7 @@ nav {
     opacity: 0.8;
     font-size: 1.4em;
     font-family:'Times New Roman';
-    background-color:lightgreen
+    background-color:lightgreen;
 }
 
 .dropbtn {
@@ -141,4 +141,54 @@ nav {
 
 .navbar-default .navbar-nav > li > a {
     color:black;
+}
+
+.villaImageContainer {
+    height: 225px;
+}
+
+.villa {
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 20px 5px #e6e6e6;
+}
+
+.villaDescription {
+    position: relative;
+    min-height: 60px;
+    padding: 15px;
+    background-color: #fff;
+    border: #ccc solid 1px;
+    border-top: none;
+    overflow: hidden;
+}
+
+
+.villaDescription h3 {
+    margin: 0;
+    padding-right: 130px;
+    font-size: 20px;
+    white-space: nowrap;
+}
+.villaDescription .service, .villaDescription .pricing {
+    margin: 0;
+    padding-right: 130px;
+    color: #999;
+    font-size: 15px;
+}
+
+.button.buttonPrimary, button.buttonPrimary, input[type="submit"].buttonPrimary, input[type="reset"].buttonPrimary, input[type="button"].buttonPrimary {
+    color: #fff;
+    background-color: #28c089;
+    border-color: #28c089;
+}
+.button.small, button.small, input[type="submit"].small, input[type="reset"].small, input[type="button"].small {
+    font-size: 15px;
+    line-height: 45px;
+    padding: 0 15px;
+}
+.viewVillaButton {
+    position: absolute;
+    right: 15px;
+    top: 35px;
 }

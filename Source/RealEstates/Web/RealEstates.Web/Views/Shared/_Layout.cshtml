@@ -21,11 +21,16 @@
                             <li class="dropbtn">@Html.ActionLink("About", "About", "Home")</li>
                         </div>
                         <div class="dropdown">
-                            <li class="dropbtn">@Html.ActionLink("Properties", "Contact", "Home")</li>
+                            <li class="dropbtn">@Html.ActionLink("Properties", "Index", "Home")</li>
                             <div class="dropdown-content">
-                                <a href="#">blabla</a>
-                                <a href="#">miamia</a>
-                                <a href="#">bumbam</a>
+                                <a href="#">Apartments</a>
+                                <a href="#">Offices</a>
+                                <a href="#">Houses</a>
+                                <a href="#">Shops</a>
+                                <a href="#">Hotels</a>
+                                <a href="#">Garages</a>
+                                <a href="#">Storages</a>
+                                <a href="#">Restaurants</a>
                             </div>
                         </div>
                         <div class="dropdown">
@@ -45,6 +50,25 @@
     </nav>
     <div class="container body-content">
         @RenderBody()
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="villa112142" class="villa" data-villaid="112142" data-villaname="Laguna Encantada" data-regionname="Mexico, Riviera Maya, Akumal" }="">
+                        <div class="villaImageContainer">
+                            <a class="villaLink villaLinkImage" id="villaLinkImage112142" href="/North-America/Mexico/Riviera-Maya/Akumal/Laguna-Encantada-112142">
+                                <img itemprop="photo" src="http://mobilepics.luxuryretreats.com/mediastock/med/600x352/1/113/112142_rviera-maya--laguna-encantada-01.jpg" style="">
+                            </a>
+                        </div>
+                        <div class="villaDescription">
+                            <h3 itemprop="name"><a class="villaLink villaLinkTitle" href="/North-America/Mexico/Riviera-Maya/Akumal/Laguna-Encantada-112142"><font><font>Laguna Encantada</font></font></a></h3>
+                            <p class="service"><a class="villaLink villaLinkDestination" href="/North-America/Mexico/Riviera-Maya/Akumal/Laguna-Encantada-112142"><font><font>4-СТАЕН, </font></font><span itemprop="addressCountry"><font><font>Akumal, Riviera Maya</font></font></span></a></p>
+                            <p class="pricing"><a class="villaLink villaLinkRates" href="/North-America/Mexico/Riviera-Maya/Akumal/Laguna-Encantada-112142"><font><font>8 Гости: $ </font></font><span class="biggerText"><font><font>500</font></font></span><font><font> - $ </font></font><span class="biggerText"><font><font>2.314</font></font></span><font><font> / нощ</font></font></a></p>
+                            <a itemprop="url" class="villaLink viewVillaButton button small buttonPrimary" href="/North-America/Mexico/Riviera-Maya/Akumal/Laguna-Encantada-112142"><font><font>VIEW VILLA</font></font></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <hr />
         <footer>
         </footer>
