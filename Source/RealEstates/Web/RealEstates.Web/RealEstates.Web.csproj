@@ -197,8 +197,10 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PropertyViewModel.cs" />
+    <Compile Include="Models\Home\PropertyViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\HomeService.cs" />
+    <Compile Include="Services\Contracts\IHomeService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -271,8 +273,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Apartments.cshtml" />
+    <Content Include="Views\Home\Offices.cshtml" />
+    <Content Include="Views\Home\Restaurants.cshtml" />
+    <Content Include="Views\Home\Hotels.cshtml" />
+    <Content Include="Views\Home\Garages.cshtml" />
+    <Content Include="Views\Home\Storages.cshtml" />
+    <Content Include="Views\Home\Houses.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Services\Base\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

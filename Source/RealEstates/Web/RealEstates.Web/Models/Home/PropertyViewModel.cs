@@ -1,4 +1,4 @@
-﻿namespace RealEstates.Web.Models
+﻿namespace RealEstates.Web.Models.Home
 {
     using Infrastructure.Mapping;
     using RealEstates.Data.Models;

@@ -1,36 +1,64 @@
-﻿using AutoMapper.QueryableExtensions;
-using RealEstates.Data.Common.Repositories;
-using RealEstates.Data.Models;
-using RealEstates.Web.Models;
-namespace RealEstates.Web.Controllers
+﻿namespace RealEstates.Web.Controllers
 {
     using System.Web.Mvc;
-    using System.Linq;
+    using Services.Contracts;
+    using Data.Common.Repositories;
+    using Data.Models;
 
     public class HomeController : Controller
     {
+        private IHomeService homeService;
         private IDeletableEntityRepository<Property> properties;
 
-        public HomeController(IDeletableEntityRepository<Property> properties)
+        public HomeController(IDeletableEntityRepository<Property> properties, IHomeService homeService)
         {
             this.properties = properties;
+            this.homeService = homeService;
         }
 
         public ActionResult Index()
         {
-            var properties = this.properties
-                .All()
-                .OrderBy(p => p.CreatedOn)
-                .Take(10)
-                .ProjectTo<PropertyViewModel>()
-                .ToList();
-
-            return View(properties);
+            return View(this.homeService.GetAllHomeViewModel());
         }
 
         public ActionResult Apartments()
         {
-            return null;
+            return View(this.homeService.GetHomeViewModel("Apartment"));
+        }
+
+        public ActionResult Offices()
+        {
+            return View(this.homeService.GetHomeViewModel("Office"));
+        }
+
+        public ActionResult Houses()
+        {
+            return View(this.homeService.GetHomeViewModel("House"));
+        }
+
+        public ActionResult Shops()
+        {
+            return View(this.homeService.GetHomeViewModel("Shop"));
+        }
+
+        public ActionResult Hotels()
+        {
+            return View(this.homeService.GetHomeViewModel("Hotel"));
+        }
+
+        public ActionResult Garages()
+        {
+            return View(this.homeService.GetHomeViewModel("Garage"));
+        }
+
+        public ActionResult Storages()
+        {
+            return View(this.homeService.GetHomeViewModel("Storage"));
+        }
+
+        public ActionResult Restaurants()
+        {
+            return View(this.homeService.GetHomeViewModel("Restaurant"));
         }
 
         public ActionResult About()

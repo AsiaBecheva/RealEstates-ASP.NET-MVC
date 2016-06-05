@@ -13,6 +13,8 @@ namespace RealEstates.Web.App_Start
     using System.Data.Entity;
     using Data.Data;
     using Data.Common.Repositories;
+    using Services.Contracts;
+    using Services;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -66,6 +68,7 @@ namespace RealEstates.Web.App_Start
             kernel.Bind<DbContext>().To<ApplicationDbContext>();
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
             kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
+            kernel.Bind<IHomeService>().To<HomeService>();
         }        
     }
 }

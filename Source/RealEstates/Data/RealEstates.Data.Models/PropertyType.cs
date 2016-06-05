@@ -2,10 +2,13 @@
 {
     public enum PropertyType
     {
-        All = 0,
-        Apartment = 1,
-        Office = 2,
-        Garage = 3,
-        Restaurant = 4
+        Apartment = 0,
+        Office = 1,
+        House = 2,
+        Shop = 3,
+        Hotel = 4,
+        Garage = 5,
+        Storage = 6,
+        Restaurant = 7
     }
 }
