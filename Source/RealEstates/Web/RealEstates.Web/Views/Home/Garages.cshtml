@@ -1,13 +1,11 @@
-﻿@model IEnumerable<RealEstates.Web.Models.Home.PropertyViewModel>
-
+﻿@model IList<RealEstates.Web.Models.Home.PropertyViewModel>
 <h1>Garages</h1>
-
-<div>
-    @foreach (var property in Model)
+<div class="container">
+    @for (int i = 0; i < Model.Count / 2; i++)
     {
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3"></div>
+        <div class="row">
+            @for (int j = 0; j < 2; j++)
+            {
                 <div class="col-md-6">
                     <div id="villa112142" class="villa">
                         <div class="villaImageContainer">
@@ -16,15 +14,15 @@
                             </a>
                         </div>
                         <div class="villaDescription">
-                            <h3><a class="villaLink villaLinkTitle">@property.Title</a></h3>
-                            <p class="service">@property.Sity</p>
-                            <p class="service">@property.PropertyStatus</p>
-                            <p>@property.Price € </p>
+                            <h3><a class="villaLink villaLinkTitle">@Model[2 * i + j].Title</a></h3>
+                            <p class="service">@Model[2 * i + j].Sity</p>
+                            <p class="service">@Model[2 * i + j].PropertyStatus</p>
+                            <p>@Model[2 * i + j].Price € </p>
                             <a class="villaLink viewVillaButton button small buttonPrimary">See more..</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
         <hr />
     }

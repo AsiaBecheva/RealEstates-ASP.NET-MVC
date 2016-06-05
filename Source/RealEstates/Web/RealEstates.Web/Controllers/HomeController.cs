@@ -61,14 +61,15 @@
             return View(this.homeService.GetHomeViewModel("Restaurant"));
         }
 
-        public ActionResult About()
+        public ActionResult Search()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        [Authorize]
+        public ActionResult Publish()
         {
             ViewBag.Message = "Your contact page.";
 
