@@ -24,21 +24,26 @@ nav {
 
 .navbar {
     margin: 10px;
-    opacity: 0.8;
-    font-size: 1.4em;
+    font-size: 1.1em;
     font-family:'Times New Roman';
-    background-color:lightgreen;
+    background-color:steelblue;
 }
 
 .dropbtn {
     padding: 5px 20px 5px 20px;
     border: none;
-    background-color:lightgreen;
+    background-color:steelblue;
     margin-left:10px;
+    color: aliceblue;
+}
+
+li.dropbtn a{
+    color: white;
+    text-decoration: none;
 }
 
 .dropbtn:hover {
-    background-color:palegreen;
+    background-color:cornflowerblue;
 }
 
 .dropdown {
@@ -50,19 +55,19 @@ nav {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color:palegreen;
+    background-color:steelblue;
     min-width: 60px;
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 9px 12px;
+    color: white;
+    padding: 10px 25px;
     text-decoration: none;
     display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #93A0FF;
+    background-color: cornflowerblue;
     color: white;
 }
 
@@ -119,7 +124,7 @@ nav {
 .right-addon input { padding-right: 30px; }
 
 .form-control {
-    margin-top: 13px;
+    margin-top: 10px;
     width: 270px;
 }
 
@@ -140,11 +145,11 @@ nav {
 }
 
 .navbar-default .navbar-nav > li > a {
-    color:black;
+    color:white;
 }
 
 .villaImageContainer {
-    height: 225px;
+    height: 250px;
 }
 
 .villa {

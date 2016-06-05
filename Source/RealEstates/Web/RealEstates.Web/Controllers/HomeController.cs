@@ -2,10 +2,11 @@
 using RealEstates.Data.Common.Repositories;
 using RealEstates.Data.Models;
 using RealEstates.Web.Models;
-using System.Web.Mvc;
-
 namespace RealEstates.Web.Controllers
 {
+    using System.Web.Mvc;
+    using System.Linq;
+
     public class HomeController : Controller
     {
         private IDeletableEntityRepository<Property> properties;
@@ -17,8 +18,19 @@ namespace RealEstates.Web.Controllers
 
         public ActionResult Index()
         {
-            var posts = this.properties.All().ProjectTo<PropertyViewModel>();
-            return View(posts);
+            var properties = this.properties
+                .All()
+                .OrderBy(p => p.CreatedOn)
+                .Take(10)
+                .ProjectTo<PropertyViewModel>()
+                .ToList();
+
+            return View(properties);
+        }
+
+        public ActionResult Apartments()
+        {
+            return null;
         }
 
         public ActionResult About()

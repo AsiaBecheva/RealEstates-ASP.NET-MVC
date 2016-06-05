@@ -20,14 +20,6 @@
 
         public virtual IDbSet<Image> Images { get; set; }
 
-        public virtual IDbSet<Apartment> Apartments { get; set; }
-
-        public virtual IDbSet<Office> Offices { get; set; }
-
-        public virtual IDbSet<Restaurants> Restaurants { get; set; }
-
-        public virtual IDbSet<Garage> Garages { get; set; }
-
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

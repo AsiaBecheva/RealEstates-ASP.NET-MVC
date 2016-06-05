@@ -8,13 +8,6 @@
 
     public class Property : AuditInfo, IDeletableEntity
     {
-        private ICollection<Image> images;
-
-        public Property()
-        {
-            this.images = new HashSet<Image>();
-        }
-
         [Key]
         public int Id { get; set; }
 
@@ -29,13 +22,7 @@
 
         [StringLength(1000)]
         public string Description { get; set; }
-
-        public virtual ICollection<Image> Images
-        {
-            get { return this.images; }
-            set { this.images = value; }
-        }
-
+        
         public string AuthorId { get; set; }
 
         public virtual User Author { get; set; }
