@@ -3,6 +3,7 @@
     using Common.Models;
     using System.ComponentModel.DataAnnotations;
     using System;
+    using System.Collections.Generic;
 
     public class Property : AuditInfo, IDeletableEntity
     {
@@ -33,5 +34,9 @@
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public int? ImageId { get; set; }
+
+        public virtual Image Image { get; set; }
     }
 }

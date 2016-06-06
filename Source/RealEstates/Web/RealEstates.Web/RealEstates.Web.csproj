@@ -192,12 +192,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Home\PropertyViewModel.cs" />
+    <Compile Include="Models\Properties\PropertyDetailsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HomeService.cs" />
     <Compile Include="Services\Contracts\IHomeService.cs" />
@@ -280,6 +282,7 @@
     <Content Include="Views\Home\Garages.cshtml" />
     <Content Include="Views\Home\Storages.cshtml" />
     <Content Include="Views\Home\Houses.cshtml" />
+    <Content Include="Views\Property\Details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
