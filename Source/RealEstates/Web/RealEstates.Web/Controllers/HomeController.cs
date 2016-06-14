@@ -4,7 +4,7 @@
     using Services.Contracts;
     using Data.Common.Repositories;
     using Data.Models;
-    using System.Web;
+
     public class HomeController : Controller
     {
         private IHomeService homeService;
@@ -39,12 +39,6 @@
         public ActionResult Houses()
         {
             return View(this.homeService.GetHomeViewModel("House"));
-        }
-
-        [OutputCache(Duration = 60 * 10)]
-        public ActionResult Shops()
-        {
-            return View(this.homeService.GetHomeViewModel("Shop"));
         }
 
         [OutputCache(Duration = 60 * 10)]

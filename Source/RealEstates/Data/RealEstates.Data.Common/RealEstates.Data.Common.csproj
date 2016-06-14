@@ -49,11 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyHelpers.cs" />
+    <Compile Include="GlobalConstants.cs" />
+    <Compile Include="IRandomGenerator.cs" />
     <Compile Include="Models\AuditInfo.cs" />
     <Compile Include="Models\IAuditInfo.cs" />
     <Compile Include="Models\IDeletableEntity.cs" />
     <Compile Include="Models\IOrderable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomGenerator.cs" />
     <Compile Include="Repositories\DeletableEntityRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IDeletableEntityRepository.cs" />
