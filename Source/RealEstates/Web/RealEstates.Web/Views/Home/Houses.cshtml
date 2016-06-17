@@ -1,29 +1,5 @@
 ﻿@model IList<RealEstates.Web.Models.Home.PropertyViewModel>
+
 <h1>Houses</h1>
-<div class="container">
-    @for (int i = 0; i < Model.Count / 2; i++)
-    {
-        <div class="row">
-            @for (int j = 0; j < 2; j++)
-            {
-                <div class="col-md-6">
-                    <div id="villa112142" class="villa">
-                        <div class="villaImageContainer">
-                            <a class="villaLink villaLinkImage">
-                                <img src="http://therealestatenatural.com/wp-content/uploads/2014/06/best-Real-Estate-Logo-For-Blogger.jpg">
-                            </a>
-                        </div>
-                        <div class="villaDescription">
-                            <h3><a class="villaLink villaLinkTitle">@Model[2 * i + j].Title</a></h3>
-                            <p class="service">@Model[2 * i + j].Sity</p>
-                            <p class="service">@Model[2 * i + j].PropertyStatus</p>
-                            <p>@Model[2 * i + j].Price € </p>
-                            <a class="villaLink viewVillaButton button small buttonPrimary" href="/Property/Details/@Model[i].Id">View property</a>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-        <hr />
-    }
-</div>
+
+@Html.Partial("_PropertyPartial")

@@ -72,11 +72,8 @@
             return View();
         }
 
-        [Authorize]
-        public ActionResult Publish()
+        public ActionResult Error()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

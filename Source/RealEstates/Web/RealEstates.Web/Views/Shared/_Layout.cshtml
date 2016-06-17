@@ -15,7 +15,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav col-md-5">
                         <div class="dropdown">
-                            <li class="dropbtn">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li class="dropbtn">@Html.ActionLink("Real Estate", "Index", "Home")</li>
                         </div>
                         <div class="dropdown">
                             <li class="dropbtn">@Html.ActionLink("Search", "Search", "Home")</li>
@@ -33,17 +33,23 @@
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li class="dropbtn">@Html.ActionLink("Publish", "Publish", "Home")</li>
+                            <li class="dropbtn">@Html.ActionLink("Publish", "Add", "Properties")</li>
                         </div>
                     </ul>
-                    <div class="col-md-2">
+                    <div class="col-md-2" style="margin-right:150px">
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-search"></i>
                             <input type="text" class="form-control" />
                         </div>
                     </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="dropdown">
+                            <li class="dropbtn">@Html.ActionLink("My Ads", "MyAds", "Home")</li>
+                        </div>
+                     }
                     @Html.Partial("_LoginPartial")
-                </div>
+                 </div>
             </div>
         </div>
     </nav>

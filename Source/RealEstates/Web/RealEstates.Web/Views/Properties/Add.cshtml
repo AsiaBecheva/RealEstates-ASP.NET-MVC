@@ -1,0 +1,36 @@
+﻿@model RealEstates.Web.Models.Properties.AddPropertyViewModel
+
+@using (Html.BeginForm ("Add", "Properties", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    @Html.EditorFor(m => m.Title)
+    @Html.EditorFor(m => m.PropertyType)
+    @Html.EditorFor(m => m.PropertyStatus)
+    @Html.EditorFor(m => m.Sity)
+    @Html.EditorFor(m => m.Description)
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Price, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <div class= "col-md-2 control-label"></div>
+            <div class="col-md-10">
+                <input type="file" name="ImageUpload" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 control-label"></div>
+        <div class="col-md-10">
+            <input type="submit" class="btn btn-primary" />
+        </div>
+    </div>
+}

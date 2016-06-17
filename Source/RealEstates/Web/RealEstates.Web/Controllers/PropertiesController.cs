@@ -7,11 +7,11 @@
     using AutoMapper.QueryableExtensions;
     using Models.Properties;
     using System.Web;
-    public class PropertyController : Controller
+    public class PropertiesController : Controller
     {
         private IDeletableEntityRepository<Property> properties;
 
-        public PropertyController(IDeletableEntityRepository<Property> properties)
+        public PropertiesController(IDeletableEntityRepository<Property> properties)
         {
             this.properties = properties;
         }
@@ -30,6 +30,16 @@
             }
 
             return View(property);
+        }
+
+        public ActionResult Add(AddPropertyViewModel model)
+        {
+            var addPropertyViewModel = new AddPropertyViewModel()
+            {
+
+            };
+
+            return View(addPropertyViewModel);
         }
     }
 }
