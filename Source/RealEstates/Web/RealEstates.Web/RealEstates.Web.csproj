@@ -288,6 +288,7 @@
     <Content Include="Views\Shared\EditorTemplates\MultilineText.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
     <Content Include="Views\Shared\_PropertyPartial.cshtml" />
+    <Content Include="Views\Shared\_FileUploadPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

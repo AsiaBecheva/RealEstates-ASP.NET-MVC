@@ -3,9 +3,17 @@
     using Common.Models;
     using System.ComponentModel.DataAnnotations;
     using System;
-
+    using System.Collections.Generic;
     public class Property : AuditInfo, IDeletableEntity
     {
+        private ICollection<Image> images;
+
+        public Property()
+        {
+            this.images = new HashSet<Image>();
+            this.CreatedOn = DateTime.Now;
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -34,8 +42,10 @@
 
         public DateTime? DeletedOn { get; set; }
 
-        public int? ImageId { get; set; }
-
-        public virtual Image Image { get; set; }
+        public ICollection<Image> Images
+        {
+            get { return this.images; }
+            set { this.images = value; }
+        }
     }
 }

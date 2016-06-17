@@ -15,10 +15,12 @@
         public string Title { get; set; }
 
         [Required]
+        [Display(Name = "Status")]
         [UIHint("Enum")]
         public PropertyStatus PropertyStatus { get; set; }
 
         [Required]
+        [Display(Name = "Type")]
         [UIHint("Enum")]
         public PropertyType PropertyType { get; set; }
         

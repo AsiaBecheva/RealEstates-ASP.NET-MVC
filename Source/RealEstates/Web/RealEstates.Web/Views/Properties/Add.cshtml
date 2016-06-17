@@ -18,10 +18,25 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="form-group">
-            <div class= "col-md-2 control-label"></div>
+            <div class="col-md-2 control-label"></div>
+            <div class="col-md-10">
+                <input type="file" name="ImageUpload" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-2 control-label"></div>
+            <div class="col-md-10">
+                <input type="file" name="ImageUpload" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-2 control-label"></div>
             <div class="col-md-10">
                 <input type="file" name="ImageUpload" />
             </div>
@@ -33,4 +48,8 @@
             <input type="submit" class="btn btn-primary" />
         </div>
     </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
 }
