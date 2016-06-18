@@ -1,0 +1,35 @@
+﻿@model IEnumerable<RealEstates.Web.Models.Properties.MyAdsViewModel>
+
+@foreach (var property in Model)
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="media">
+                <a class="media-left" href="#">
+                    <img class="media-object" src="http://www.residencyinspain.com/perch/resources/steps-icons-management-4-w160.png" alt="placeholder image">
+                </a>
+                <div class="media-body">
+                    <div>
+                        @property.Title
+                    </div>
+                    <div>
+                        <strong>Type: </strong>@property.PropertyType 
+                    </div>
+                    <div>
+                        <strong>Status: </strong>@property.PropertyStatus
+                    </div>
+                    <p>@property.Description</p>
+                    <a class="btn btn-primary" href="/Properties/UpdateToActive/@property.Id">Active</a>
+                    <a class="btn btn-primary" href="/Properties/UpdateToInactive/@property.Id">Inactive</a>
+                    <a class="btn btn-danger" href="/Properties/Delete/@property.Id">Delete</a>
+                    <div>
+                        <a class="btn btn-xs" style="margin-top:15px" href="/Properties/Details/@property.Id">See details..</a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+}
+
+<a class="btn btn-primary btn-lg" href="/Properties/Add">Add new ad</a>

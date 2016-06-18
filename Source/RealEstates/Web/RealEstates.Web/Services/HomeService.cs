@@ -21,9 +21,9 @@
         {
             var homeViewModel = properties
                 .All()
-                .Where(x => x.PropertyType.ToString() == property)
-                .OrderBy(p => p.CreatedOn)
-                .Take(15)
+                .Where(x => x.PropertyType.ToString() == property && x.IsDeleted == false)
+                .OrderByDescending(p => p.CreatedOn)
+                .Take(25)
                 .ProjectTo<PropertyViewModel>()
                 .ToList();
 
@@ -34,8 +34,9 @@
         {
             var homeViewModel = this.properties
                 .All()
-                .OrderBy(p => p.CreatedOn)
-                .Take(15)
+                .Where(x => x.IsDeleted == false)
+                .OrderByDescending(p => p.CreatedOn)
+                .Take(25)
                 .ProjectTo<PropertyViewModel>()
                 .ToList();
 
