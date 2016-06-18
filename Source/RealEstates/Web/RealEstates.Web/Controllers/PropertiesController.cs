@@ -6,7 +6,6 @@
     using System.Linq;
     using AutoMapper.QueryableExtensions;
     using Models.Properties;
-    using System.Web;
     using Microsoft.AspNet.Identity;
     using System;
 
@@ -35,7 +34,7 @@
 
             if (property == null)
             {
-                throw new HttpException(404, "Property not Found!");
+                return this.Content("You can see details on only active properties");
             }
 
             return View(property);

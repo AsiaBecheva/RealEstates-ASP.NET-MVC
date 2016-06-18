@@ -17,7 +17,8 @@
             this.homeService = homeService;
         }
 
-        //[OutputCache(Duration = 60 * 10)]
+        //TODO: Uncomment all cache in production
+        //[OutputCache(Duration = 60 * 10)]  
         public ActionResult Index()
         {
             return View(this.homeService.GetAllHomeViewModel());
