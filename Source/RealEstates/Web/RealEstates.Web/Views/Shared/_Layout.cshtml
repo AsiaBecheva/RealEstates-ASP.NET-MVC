@@ -39,18 +39,26 @@
                             </div>
                         }
                     </ul>
-                    <div class="col-md-2" style="margin-right:150px">
-                        <div class="inner-addon left-addon">
-                            <i class="glyphicon glyphicon-search"></i>
-                            <input type="text" class="form-control" />
+                    @using (Ajax.BeginForm("Search", new AjaxOptions
+                    {
+                        Url = "_PropertyPartial.cshtml",
+                        UpdateTargetId = "target",
+                        InsertionMode = InsertionMode.Replace
+                    }))
+                    {
+                        <div class="col-md-2" style="margin-right:150px">
+                            <div class="inner-addon left-addon">
+                                <i class="glyphicon glyphicon-search"></i>
+                                <input type="text" name="query" class="form-control" />
+                            </div>
                         </div>
-                    </div>
+                    }
                     @if (User.Identity.IsAuthenticated)
                     {
                         <div class="dropdown">
                             <li class="dropbtn">@Html.ActionLink("My Ads", "MyAds", "Properties")</li>
                         </div>
-                     }
+                        }
                     @Html.Partial("_LoginPartial")
                  </div>
             </div>

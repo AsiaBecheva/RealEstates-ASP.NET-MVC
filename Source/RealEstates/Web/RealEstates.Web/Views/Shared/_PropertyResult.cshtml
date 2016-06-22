@@ -1,0 +1,34 @@
+﻿@model IList<RealEstates.Web.Models.Home.PropertyViewModel>
+
+<head>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="container">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <div class="row">
+                @for (int j = 0; j < 1; j++)
+                {
+                    <div class="col-md-6">
+                        <div id="villa112142" class="villa">
+                            <div class="villaImageContainer">
+                                <a class="villaLink villaLinkImage">
+                                    <img src="http://therealestatenatural.com/wp-content/uploads/2014/06/best-Real-Estate-Logo-For-Blogger.jpg">
+                                </a>
+                            </div>
+                            <div class="villaDescription">
+                                <h3><a class="villaLink villaLinkTitle">@Model[i + j].Title</a></h3>
+                                <p class="service">@Model[i + j].Sity</p>
+                                <p class="service">@Model[i + j].PropertyStatus</p>
+                                <p>@Model[1 * i + j].Price € </p>
+                                <a class="villaLink viewVillaButton button small buttonPrimary" href="/Properties/Details/@Model[i + j].Id">View property</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <hr />
+        }
+    </div>
+</body>

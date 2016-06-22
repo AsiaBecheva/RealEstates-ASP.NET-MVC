@@ -292,6 +292,8 @@
     <Content Include="Views\Shared\_PropertyPartial.cshtml" />
     <Content Include="Views\Shared\_FileUploadPartial.cshtml" />
     <Content Include="Views\Properties\MyAds.cshtml" />
+    <Content Include="Views\Shared\_PropertyResult.cshtml" />
+    <Content Include="Views\Shared\_NoResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />

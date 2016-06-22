@@ -4,7 +4,10 @@
     using Services.Contracts;
     using Data.Common.Repositories;
     using Data.Models;
-
+    using System;
+    using System.Linq;
+    using AutoMapper.QueryableExtensions;
+    using Models.Home;
     public class HomeController : Controller
     {
         private IHomeService homeService;
@@ -66,9 +69,15 @@
             return View(this.homeService.GetHomeViewModel("Restaurant"));
         }
 
-        public ActionResult Search()
+        public ActionResult Search(string query)
         {
-            return View();
+            var result = this.properties
+                .All()
+                .Where(p => p.Title.ToLower().Contains(query.ToLower()))
+                .ProjectTo<PropertyViewModel>()
+                .ToList();
+
+            return PartialView("_PropertyResult", result);
         }
 
         public ActionResult Error()
