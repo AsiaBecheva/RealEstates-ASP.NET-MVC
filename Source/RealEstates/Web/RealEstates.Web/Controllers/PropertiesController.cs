@@ -8,7 +8,9 @@
     using Models.Properties;
     using Microsoft.AspNet.Identity;
     using System;
-
+    using System.Web;
+    using System.Collections.Generic;
+    using System.Data.Entity;
     public class PropertiesController : Controller
     {
         private IDeletableEntityRepository<Property> modifiableProperties;
@@ -41,7 +43,7 @@
         }
 
         [Authorize]
-        public ActionResult Add(AddPropertyViewModel model)
+        public ActionResult Add(AddPropertyViewModel model, HttpPostedFileBase upload)
         {
             if (model != null && ModelState.IsValid)
             {
@@ -56,6 +58,21 @@
                     PropertyStatus = model.PropertyStatus,
                     PropertyType = model.PropertyType
                 };
+
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var avatar = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    property.Files = new List<File> { avatar };
+                }
 
                 this.modifiableProperties.Add(property);
                 this.modifiableProperties.SaveChanges();

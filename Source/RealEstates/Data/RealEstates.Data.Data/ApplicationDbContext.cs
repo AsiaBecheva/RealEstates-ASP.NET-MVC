@@ -18,7 +18,7 @@
 
         public virtual IDbSet<Property> Properties { get; set; }
 
-        public virtual IDbSet<Image> Images { get; set; }
+        public DbSet<File> Files { get; set; }
 
         public static ApplicationDbContext Create()
         {

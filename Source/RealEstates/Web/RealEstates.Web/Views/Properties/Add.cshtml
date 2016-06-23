@@ -1,6 +1,6 @@
 ﻿@model RealEstates.Web.Models.Properties.AddPropertyViewModel
 
-@using (Html.BeginForm ("Add", "Properties", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm ("Add", "Properties",null, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -18,28 +18,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="form-group">
-            <div class="col-md-2 control-label"></div>
-            <div class="col-md-10">
-                <input type="file" name="ImageUpload" />
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group">
-            <div class="col-md-2 control-label"></div>
-            <div class="col-md-10">
-                <input type="file" name="ImageUpload" />
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group">
-            <div class="col-md-2 control-label"></div>
-            <div class="col-md-10">
-                <input type="file" name="ImageUpload" />
-            </div>
+
+    <div class="form-group">
+        @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" id="Avatar" name="upload" />
         </div>
     </div>
     <div class="form-group">

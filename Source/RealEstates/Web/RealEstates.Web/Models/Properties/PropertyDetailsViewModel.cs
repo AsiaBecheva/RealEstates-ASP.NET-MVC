@@ -2,7 +2,7 @@
 {
     using Infrastructure.Mapping;
     using RealEstates.Data.Models;
-
+    using System.Collections.Generic;
     public class PropertyDetailsViewModel : IMapFrom<Property>
     {
         public int Id { get; set; }
@@ -19,6 +19,6 @@
 
         public decimal Price { get; set; }
 
-        public int? ImageId { get; set; }
+        public ICollection<File> Files { get; set; }
     }
 }
