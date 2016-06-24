@@ -17,6 +17,7 @@
 
         [Required]
         [MaxLength(100)]
+        [UIHint("SingleLineText")]
         public string Title { get; set; }
 
         [Required]
@@ -28,6 +29,7 @@
         public decimal Price { get; set; }
 
         [StringLength(1000)]
+        [UIHint("MultilineText")]
         public string Description { get; set; }
         
         public string AuthorId { get; set; }

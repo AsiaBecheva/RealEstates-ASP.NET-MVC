@@ -213,7 +213,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Views\Properties\property.png" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -295,11 +294,9 @@
     <Content Include="Views\Properties\MyAds.cshtml" />
     <Content Include="Views\Shared\_PropertyResult.cshtml" />
     <Content Include="Views\Shared\_NoResults.cshtml" />
+    <Content Include="Views\Properties\Edit.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\File\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />

@@ -11,6 +11,7 @@
     using System.Web;
     using System.Collections.Generic;
     using System.Data.Entity;
+    using System.Net;
     public class PropertiesController : Controller
     {
         private IDeletableEntityRepository<Property> modifiableProperties;
@@ -127,6 +128,65 @@
 
                 return RedirectToAction("MyAds");
             }
+        }
+
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+            var currentUser = this.User.Identity.GetUserId();
+            var currentProperty = this.modifiableProperties.GetById(id).AuthorId == currentUser;
+
+            if (currentProperty == false)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var property = this.modifiableProperties.GetById(id);
+                return View(property);
+            }
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Edit(Property model, HttpPostedFileBase upload)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                var property = new Property()
+                {
+                    Id = model.Id,
+                    AuthorId = this.User.Identity.GetUserId(),
+                    Title = model.Title,
+                    Description = model.Description,
+                    Sity = model.Sity,
+                    Price = model.Price,
+                    PropertyStatus = model.PropertyStatus,
+                    PropertyType = model.PropertyType
+                };
+
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var avatar = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    property.Files = new List<File> { avatar };
+                }
+
+                this.modifiableProperties.Update(property);
+                this.modifiableProperties.SaveChanges();
+
+                return RedirectToAction("MyAds", "Properties");
+            }
+
+            return View(model);
         }
 
         [Authorize]

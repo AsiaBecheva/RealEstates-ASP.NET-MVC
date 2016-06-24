@@ -24,7 +24,7 @@
         [UIHint("Enum")]
         public PropertyType PropertyType { get; set; }
         
-        [DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
         public decimal Price { get; set; }
 
         [StringLength(1000)]
