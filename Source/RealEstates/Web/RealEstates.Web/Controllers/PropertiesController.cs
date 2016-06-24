@@ -165,20 +165,24 @@
                     PropertyType = model.PropertyType
                 };
 
-                if (upload != null && upload.ContentLength > 0)
-                {
-                    var avatar = new File
-                    {
-                        FileName = System.IO.Path.GetFileName(upload.FileName),
-                        FileType = FileType.Avatar,
-                        ContentType = upload.ContentType
-                    };
-                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
-                    {
-                        avatar.Content = reader.ReadBytes(upload.ContentLength);
-                    }
-                    property.Files = new List<File> { avatar };
-                }
+                //if (upload != null && upload.ContentLength > 0)
+                //{
+                //    if (property.Files.Any(f => f.FileType == FileType.Avatar))
+                //    {
+                //        property.Files.Remove(property.Files.First(f => f.FileType == FileType.Avatar));
+                //    }
+                //    var avatar = new File
+                //    {
+                //        FileName = System.IO.Path.GetFileName(upload.FileName),
+                //        FileType = FileType.Avatar,
+                //        ContentType = upload.ContentType
+                //    };
+                //    var reader = new System.IO.BinaryReader(upload.InputStream);
+                //    
+                //    avatar.Content = reader.ReadBytes(upload.ContentLength);
+                //    
+                //    property.Files = new List<File> { avatar };
+                //}
 
                 this.modifiableProperties.Update(property);
                 this.modifiableProperties.SaveChanges();
