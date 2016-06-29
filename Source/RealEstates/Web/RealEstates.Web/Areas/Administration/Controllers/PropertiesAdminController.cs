@@ -3,9 +3,9 @@
     using System.Linq;
     using System.Web.Mvc;
     using RealEstates.Data.Models;
-    using TicketingSystem.Common;
     using Data.Common.Repositories;
     using Services.Contracts;
+    using Data.Common;
 
     [Authorize(Roles = GlobalConstants.AdminRole)]
     public class PropertiesAdminController : Controller

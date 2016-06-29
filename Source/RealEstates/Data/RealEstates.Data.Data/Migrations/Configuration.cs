@@ -1,14 +1,13 @@
 namespace RealEstates.Data.Data.Migrations
 {
+    using Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
     using System;
     using System.Data.Entity.Migrations;
-    using System.IO;
     using System.Linq;
-    using System.Reflection;
-    using TicketingSystem.Common;
+
     public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         private UserManager<User> userManager;

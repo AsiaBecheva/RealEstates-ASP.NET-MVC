@@ -1,4 +1,4 @@
-﻿namespace TicketingSystem.Common
+﻿namespace RealEstates.Data.Common
 {
     using System;
     using System.Text;

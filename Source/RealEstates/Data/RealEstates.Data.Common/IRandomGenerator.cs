@@ -1,4 +1,4 @@
-﻿namespace TicketingSystem.Common
+﻿namespace RealEstates.Data.Common
 {
     public interface IRandomGenerator
     {
