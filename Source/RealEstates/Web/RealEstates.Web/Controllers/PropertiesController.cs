@@ -10,30 +10,28 @@
     using System;
     using System.Web;
     using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Net;
+    using Services.Contracts;
     public class PropertiesController : Controller
     {
         private IDeletableEntityRepository<Property> modifiableProperties;
         private IRepository<Property> realDeleteProperties;
         private IDeletableEntityRepository<User> users;
+        private IPropertyService propertyService;
 
         public PropertiesController(IDeletableEntityRepository<Property> modifiableProperties, 
             IDeletableEntityRepository<User> users,
-            IRepository<Property> realDeleteProperties)
+            IRepository<Property> realDeleteProperties,
+            IPropertyService propertyService)
         {
             this.modifiableProperties = modifiableProperties;
             this.users = users;
             this.realDeleteProperties = realDeleteProperties;
+            this.propertyService = propertyService;
         }
 
         public ActionResult Details(int id)
         {
-            var property = modifiableProperties
-                .All()
-                .Where(pr => pr.Id == id)
-                .ProjectTo<PropertyDetailsViewModel>()
-                .FirstOrDefault();
+            var property = this.propertyService.PropertyDetails(id);
 
             if (property == null)
             {
@@ -48,17 +46,8 @@
         {
             if (model != null && ModelState.IsValid)
             {
-                var property = new Property()
-                {
-                    Id = model.Id,
-                    AuthorId = this.User.Identity.GetUserId(),
-                    Title = model.Title,
-                    Description = model.Description,
-                    Sity = model.Sity,
-                    Price = model.Price,
-                    PropertyStatus = model.PropertyStatus,
-                    PropertyType = model.PropertyType
-                };
+                var currentUser = this.User.Identity.GetUserId();
+                var property = this.propertyService.CreateProperty(model, currentUser);
 
                 if (upload != null && upload.ContentLength > 0)
                 {
@@ -153,17 +142,8 @@
         {
             if (model != null && ModelState.IsValid)
             {
-                var property = new Property()
-                {
-                    Id = model.Id,
-                    AuthorId = this.User.Identity.GetUserId(),
-                    Title = model.Title,
-                    Description = model.Description,
-                    Sity = model.Sity,
-                    Price = model.Price,
-                    PropertyStatus = model.PropertyStatus,
-                    PropertyType = model.PropertyType
-                };
+                var currentUser = this.User.Identity.GetUserId();
+                var property = this.propertyService.CreateProperty(model, currentUser);
                 
                 //TODO: fix this
                 //if (upload != null && upload.ContentLength > 0)
@@ -215,11 +195,7 @@
         public ActionResult MyAds()
         {
             var currentUser = this.User.Identity.GetUserId();
-            var myAds = this.realDeleteProperties
-                .All()
-                .Where(x => x.AuthorId == currentUser)
-                .ProjectTo<MyAdsViewModel>()
-                .ToList();
+            var myAds = this.propertyService.GetMyAds(currentUser);
 
             return View(myAds);
         }

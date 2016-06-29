@@ -7,9 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/kendo")
     @RenderSection("styles", required: false)
-    @Styles.Render("~/Content/custom")
 
 </head>
 <body>
@@ -39,7 +37,7 @@
                         @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
                         {
                             <div class="dropdown">
-                                <li class="dropbtn">@Html.ActionLink("Publish", "Add", "Properties", new { area = string.Empty })</li>
+                                <li class="dropbtn">@Html.ActionLink("Publish", "Add", "Properties", new { area = string.Empty }, null)</li>
                             </div>
                         }
                     </ul>
@@ -60,7 +58,7 @@
                     @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
                     {
                         <div class="dropdown">
-                            <li class="dropbtn">@Html.ActionLink("My Ads", "MyAds", "Properties", new { area = string.Empty })</li>
+                            <li class="dropbtn">@Html.ActionLink("My Ads", "MyAds", "Properties", new { area = string.Empty }, null)</li>
                         </div>
                     }
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
@@ -81,7 +79,6 @@
     </div>
 
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/kendo")
     @RenderSection("scripts", required: false)
 </body>
 </html>
