@@ -1,101 +1,76 @@
 ﻿namespace RealEstates.Web.Areas.Administration.Controllers
 {
-    using System.Data.Entity;
     using System.Linq;
-    using System.Net;
     using System.Web.Mvc;
-    using RealEstates.Data.Data;
     using RealEstates.Data.Models;
+    using TicketingSystem.Common;
+    using Data.Common.Repositories;
+    using Services.Contracts;
 
+    [Authorize(Roles = GlobalConstants.AdminRole)]
     public class PropertiesAdminController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private IRepository<Property> properties;
+        private IPropertyService propertyService;
 
-        // GET: Administration/PropertiesAdmin
+        public PropertiesAdminController(IRepository<Property> properties, IPropertyService propertyService)
+        {
+            this.properties = properties;
+            this.propertyService = propertyService;
+        }
+
+        
         public ActionResult Index()
         {
-            var properties = db.Properties.Include(p => p.Author);
-            return View(properties.ToList());
+            var allProperties = properties.All().ToList();
+
+            return View(allProperties);
+        }
+        
+
+        public ActionResult Details(int id)
+        {
+            var property = this.propertyService.PropertyDetails(id);
+
+            return View(property);
         }
 
-        // GET: Administration/PropertiesAdmin/Details/5
-        public ActionResult Details(int? id)
+        
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Property property = db.Properties.Find(id);
+            Property property = properties.GetById(id);
             if (property == null)
             {
                 return HttpNotFound();
             }
+
             return View(property);
         }
 
-        // GET: Administration/PropertiesAdmin/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Property property = db.Properties.Find(id);
-            if (property == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.AuthorId = new SelectList(db.Users, "Id", "Email", property.AuthorId);
-            return View(property);
-        }
-
-        // POST: Administration/PropertiesAdmin/Edit/5
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Property property)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(property).State = EntityState.Modified;
-                db.SaveChanges();
+                properties.Update(property);
+                properties.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(property);
         }
 
-        // GET: Administration/Properties/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Property property = db.Properties.Find(id);
-            if (property == null)
-            {
-                return HttpNotFound();
-            }
-            return View(property);
-        }
 
-        // POST: Administration/Properties/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
-            Property property = db.Properties.Find(id);
-            db.Properties.Remove(property);
-            db.SaveChanges();
+            var deleteAd = this.properties.GetById(id);
+
+            properties.Delete(deleteAd);
+            properties.SaveChanges();
+
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

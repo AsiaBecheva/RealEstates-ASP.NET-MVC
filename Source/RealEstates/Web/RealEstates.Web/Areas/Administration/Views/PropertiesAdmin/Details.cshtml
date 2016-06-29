@@ -1,106 +1,31 @@
-﻿@model RealEstates.Data.Models.Property
+﻿@model RealEstates.Web.Models.Properties.PropertyDetailsViewModel
 
-@{
-    ViewBag.Title = "Details";
-}
+<h2>@Model.Title</h2>
 
-<h2>Details</h2>
-
-<div>
-    <h4>Property</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Author.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Author.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PropertyStatus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PropertyStatus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PropertyType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PropertyType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DeletedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeletedOn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedOn)
-        </dd>
-
-    </dl>
+<h3>@Model.Sity</h3>
+<div class="row">
+    <div class="col-md-4">
+        <div>
+            <strong>Property Id: </strong> @Model.Id
+        </div>
+        <div>
+            <strong>Property type: </strong> @Model.PropertyType
+        </div>
+        <div>
+            <strong>Property status: </strong> @Model.PropertyStatus
+        </div>
+        <div>
+            <strong>Price: </strong> @Model.Price <strong> €</strong>
+        </div>
+        <div style="word-wrap: break-word">
+            <strong>Description: </strong> @Model.Description
+        </div>
+        <a href="/Properties/Edit/@Model.Id" class="btn btn-success">Edit</a>
+    </div>
+    <div class="col-md-4">
+        @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
+        {
+            <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" />
+        }
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

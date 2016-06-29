@@ -237,7 +237,6 @@
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Administration\Views\PropertiesAdmin\Delete.cshtml" />
     <Content Include="Areas\Administration\Views\PropertiesAdmin\Details.cshtml" />
     <Content Include="Areas\Administration\Views\PropertiesAdmin\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\PropertiesAdmin\Index.cshtml" />

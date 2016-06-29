@@ -192,6 +192,7 @@
             }
         }
 
+        [Authorize]
         public ActionResult MyAds()
         {
             var currentUser = this.User.Identity.GetUserId();
