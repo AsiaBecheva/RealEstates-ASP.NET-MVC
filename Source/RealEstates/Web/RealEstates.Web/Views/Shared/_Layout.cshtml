@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/kendo")
+    @RenderSection("styles", required: false)
+    @Styles.Render("~/Content/custom")
 
 </head>
 <body>
@@ -15,27 +19,27 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav col-md-5">
                         <div class="dropdown">
-                            <li class="dropbtn">@Html.ActionLink("Real Estate", "Index", "Home")</li>
+                            <li class="dropbtn">@Html.ActionLink("Real Estate", "Index", "Home", new { area = string.Empty }, null)</li>
                         </div>
                         <div class="dropdown">
-                            <li class="dropbtn">@Html.ActionLink("Search", "Search", "Home")</li>
+                            <li class="dropbtn">@Html.ActionLink("Search", "Search", "Home", new { area = string.Empty }, null)</li>
                         </div>
                         <div class="dropdown">
-                            <li class="dropbtn">@Html.ActionLink("Properties", "Index", "Home")</li>
+                            <li class="dropbtn">@Html.ActionLink("Properties", "Index", "Home", new { area = string.Empty }, null)</li>
                             <div class="dropdown-content">
-                                <p>@Html.ActionLink("Apartments", "Apartments", "Home")</p>
-                                <p>@Html.ActionLink("Offices", "Offices", "Home")</p>
-                                <p>@Html.ActionLink("Houses", "Houses", "Home")</p>
-                                <p>@Html.ActionLink("Hotels", "Hotels", "Home")</p>
-                                <p>@Html.ActionLink("Garages", "Garages", "Home")</p>
-                                <p>@Html.ActionLink("Storages", "Storages", "Home")</p>
-                                <p>@Html.ActionLink("Restaurants", "Restaurants", "Home")</p>
+                                <p>@Html.ActionLink("Apartments", "Apartments", "Home", new { area = string.Empty }, null)</p>
+                                <p>@Html.ActionLink("Offices", "Offices", "Home", new { area = string.Empty }, null)</p>
+                                <p>@Html.ActionLink("Houses", "Houses", "Home", new { area = string.Empty }, null)</p>
+                                <p>@Html.ActionLink("Hotels", "Hotels", "Home", new { area = string.Empty }, null)</p>
+                                <p>@Html.ActionLink("Garages", "Garages", "Home", new { area = string.Empty }, null)</p>
+                                <p>@Html.ActionLink("Storages", "Storages", "Home", new { area = string.Empty }, null)</p>
+                                <p>@Html.ActionLink("Restaurants", "Restaurants", "Home", new { area = string.Empty }, null)</p>
                             </div>
                         </div>
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
                         {
                             <div class="dropdown">
-                                <li class="dropbtn">@Html.ActionLink("Publish", "Add", "Properties")</li>
+                                <li class="dropbtn">@Html.ActionLink("Publish", "Add", "Properties", new { area = string.Empty })</li>
                             </div>
                         }
                     </ul>
@@ -46,19 +50,25 @@
                         InsertionMode = InsertionMode.Replace
                     }))
                     {
-                        <div class="col-md-2" style="margin-right:150px">
+                        <div class="col-md-2" style="margin-right:90px">
                             <div class="inner-addon left-addon">
                                 <i class="glyphicon glyphicon-search"></i>
                                 <input type="text" name="query" class="form-control" />
                             </div>
                         </div>
                     }
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
                     {
                         <div class="dropdown">
-                            <li class="dropbtn">@Html.ActionLink("My Ads", "MyAds", "Properties")</li>
+                            <li class="dropbtn">@Html.ActionLink("My Ads", "MyAds", "Properties", new { area = string.Empty })</li>
                         </div>
-                        }
+                    }
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                    <div class="dropdown">
+                        <li class="dropbtn">@Html.ActionLink("Administration", "Index", "PropertiesAdmin", new { area = "Administration" }, null)</li>
+                    </div>
+                    }
                     @Html.Partial("_LoginPartial")
                  </div>
             </div>
@@ -70,8 +80,8 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/kendo")
     @RenderSection("scripts", required: false)
 </body>
 </html>

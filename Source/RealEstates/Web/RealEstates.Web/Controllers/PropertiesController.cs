@@ -164,7 +164,8 @@
                     PropertyStatus = model.PropertyStatus,
                     PropertyType = model.PropertyType
                 };
-
+                
+                //TODO: fix this
                 //if (upload != null && upload.ContentLength > 0)
                 //{
                 //    if (property.Files.Any(f => f.FileType == FileType.Avatar))
