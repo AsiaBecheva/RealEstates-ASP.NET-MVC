@@ -1,35 +1,88 @@
 ﻿@model IEnumerable<RealEstates.Web.Models.Properties.MyAdsViewModel>
 
-@foreach (var property in Model)
-{
-    <div class="row">
-        <div class="col-md-6">
-            <div class="media">
-                <a class="media-left" href="#">
-                    <img class="media-object" src="http://www.residencyinspain.com/perch/resources/steps-icons-management-4-w160.png" alt="placeholder image">
-                </a>
-                <div class="media-body">
-                    <div>
-                        @property.Title
-                    </div>
-                    <div>
-                        <strong>Type: </strong>@property.PropertyType 
-                    </div>
-                    <div>
-                        <strong>Status: </strong>@property.PropertyStatus
-                    </div>
-                    <p>@property.Description</p>
-                    <a class="btn btn-primary" href="/Properties/UpdateToActive/@property.Id">Active</a>
-                    <a class="btn btn-primary" href="/Properties/UpdateToInactive/@property.Id">Inactive</a>
-                    <a class="btn btn-danger" href="/Properties/Delete/@property.Id">Delete</a>
-                    <div>
-                        <a class="btn btn-xs" style="margin-top:15px" href="/Properties/Details/@property.Id">See details..</a>
+    @foreach (var property in Model)
+    {
+        <div class="row">
+            <div class="col-md-9">
+                <div class="media">
+                    <a class="media-left" href="#">
+                        <img class="media-object" src="http://www.residencyinspain.com/perch/resources/steps-icons-management-4-w160.png" alt="placeholder image">
+                    </a>
+                    <div class="media-body">
+                        <div>
+                            @property.Title
+                        </div>
+                        <div>
+                            <strong>Type: </strong>@property.PropertyType
+                        </div>
+                        <div>
+                            <strong>Status: </strong>@property.PropertyStatus
+                        </div>
+                        <p>@property.Description</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Activate</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h3 style="margin-left:20px">Are you sure you want to activate this advertisement?</h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-primary" href="/Properties/UpdateToActive/@property.Id" style="margin-right:260px">Activate</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Deactivate</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal1" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h3 style="margin-left:20px">Are you sure you want to deactivate this advertisement?</h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-primary" href="/Properties/UpdateToInactive/@property.Id" style="margin-right:260px">Deactivate</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal2">Delete</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal2" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h3 style="margin-left:20px">Are you sure you want to delete this property?</h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" href="/Properties/Delete/@property.Id" style="margin-right:260px">Delete</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div>
+                            <a class="btn btn-xs" style="margin-top:15px" href="/Properties/Details/@property.Id">See details..</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <hr />
-        </div>
-    </div>
-}
+                <hr />
 
-<a class="btn btn-primary btn-lg" href="/Properties/Add">Add new ad</a>
+            </div>
+        </div>
+    }
+
+    <a class="btn btn-primary btn-lg" href="/Properties/Add">Add new ad</a>
+

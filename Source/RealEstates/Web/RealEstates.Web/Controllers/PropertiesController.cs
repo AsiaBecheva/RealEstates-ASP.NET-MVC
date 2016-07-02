@@ -84,7 +84,7 @@
 
             if (updateAd.IsDeleted == true)
             {
-                return this.Content("This Ad is already inactive!");
+                return View("ViewInactive");
             }
             else
             {
@@ -107,7 +107,7 @@
 
             if (updateAd.IsDeleted == false)
             {
-                return this.Content("This Ad is active!");
+                return View("ViewActive");
             }
             else
             {
