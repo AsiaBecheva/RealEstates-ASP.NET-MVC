@@ -7,7 +7,7 @@
     using System.Linq;
     using AutoMapper.QueryableExtensions;
     using Contracts;
-
+    using Infrastructure.Mapping;
     public class HomeService : IHomeService
     {
         private IDeletableEntityRepository<Property> properties;
@@ -24,7 +24,7 @@
                 .Where(x => x.PropertyType.ToString() == property && x.IsDeleted == false)
                 .OrderByDescending(p => p.CreatedOn)
                 .Take(25)
-                .ProjectTo<PropertyViewModel>()
+                .To<PropertyViewModel>()
                 .ToList();
 
             return homeViewModel;
@@ -37,7 +37,7 @@
                 .Where(x => x.IsDeleted == false)
                 .OrderByDescending(p => p.CreatedOn)
                 .Take(25)
-                .ProjectTo<PropertyViewModel>()
+                .To<PropertyViewModel>()
                 .ToList();
 
             return homeViewModel;

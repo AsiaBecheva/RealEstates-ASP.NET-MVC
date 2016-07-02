@@ -339,10 +339,6 @@
       <Project>{07d6c846-8d73-47a1-9695-bc3ed6725a9e}</Project>
       <Name>RealEstates.Data.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RealEstates.Web.Common\RealEstates.Web.Common.csproj">
-      <Project>{b169d0aa-2fe5-42ca-a7ad-8f2677ebccb3}</Project>
-      <Name>RealEstates.Web.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RealEstates.Web.Infrastructure\RealEstates.Web.Infrastructure.csproj">
       <Project>{FDE71878-14B3-463E-90A3-49C013D15097}</Project>
       <Name>RealEstates.Web.Infrastructure</Name>

@@ -8,6 +8,7 @@
     using System.Linq;
     using AutoMapper.QueryableExtensions;
     using Models.Home;
+    using Infrastructure.Mapping;
     public class HomeController : Controller
     {
         private IHomeService homeService;
@@ -44,26 +45,22 @@
         {
             return View(this.homeService.GetHomeViewModel("House"));
         }
-
-        //[OutputCache(Duration = 60 * 10)]
+        
         public ActionResult Hotels()
         {
             return View(this.homeService.GetHomeViewModel("Hotel"));
         }
-
-        //[OutputCache(Duration = 60 * 10)]
+        
         public ActionResult Garages()
         {
             return View(this.homeService.GetHomeViewModel("Garage"));
         }
-
-        //[OutputCache(Duration = 60 * 10)]
+        
         public ActionResult Storages()
         {
             return View(this.homeService.GetHomeViewModel("Storage"));
         }
-
-        //[OutputCache(Duration = 60 * 10)]
+        
         public ActionResult Restaurants()
         {
             return View(this.homeService.GetHomeViewModel("Restaurant"));
@@ -74,7 +71,7 @@
             var result = this.properties
                 .All()
                 .Where(p => p.Title.ToLower().Contains(query.ToLower()))
-                .ProjectTo<PropertyViewModel>()
+                .To<PropertyViewModel>()
                 .ToList();
 
             return PartialView("_PropertyResult", result);

@@ -1,6 +1,7 @@
 ﻿namespace RealEstates.Web
 {
     using RealEstates.Web.Infrastructure.Mapping;
+    using System.Reflection;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -12,14 +13,12 @@
         {
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
-
+            
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            var autoMapperConfig = new AutoMapperConfig();
-            autoMapperConfig.Execute();
+            AutoMapperConfig.Execute(Assembly.GetExecutingAssembly());
         }
     }
 }

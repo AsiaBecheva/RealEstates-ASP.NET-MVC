@@ -9,7 +9,7 @@
     using AutoMapper.QueryableExtensions;
     using System.Web.Mvc;
     using Microsoft.AspNet.Identity;
-
+    using Infrastructure.Mapping;
     public class PropertyService : Controller, IPropertyService
     {
         private IDeletableEntityRepository<Property> modifiableProperties;
@@ -30,7 +30,7 @@
             var property = modifiableProperties
                .All()
                .Where(pr => pr.Id == id)
-               .ProjectTo<PropertyDetailsViewModel>()
+               .To<PropertyDetailsViewModel>()
                .FirstOrDefault();
 
             return property;
@@ -75,7 +75,7 @@
             var myAds = this.realDeleteProperties
                 .All()
                 .Where(x => x.AuthorId == currentUser)
-                .ProjectTo<MyAdsViewModel>()
+                .To<MyAdsViewModel>()
                 .ToList();
 
             return myAds;
