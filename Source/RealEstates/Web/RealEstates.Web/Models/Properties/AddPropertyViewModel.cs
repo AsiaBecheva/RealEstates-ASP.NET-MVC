@@ -25,7 +25,7 @@
         public PropertyType PropertyType { get; set; }
         
         //[DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [StringLength(1000)]
         [UIHint("MultilineText")]

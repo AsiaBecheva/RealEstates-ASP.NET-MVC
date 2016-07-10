@@ -17,7 +17,7 @@
 
         public PropertyType PropertyType { get; set; }
 
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         public ICollection<File> Files { get; set; }
 
