@@ -74,6 +74,7 @@
         {
             var myAds = this.realDeleteProperties
                 .All()
+                .OrderByDescending(x => x.DeletedOn)
                 .Where(x => x.AuthorId == currentUser)
                 .To<MyAdsViewModel>()
                 .ToList();

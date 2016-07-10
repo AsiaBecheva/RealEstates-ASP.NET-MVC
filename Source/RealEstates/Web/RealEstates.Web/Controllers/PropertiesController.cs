@@ -144,30 +144,27 @@
             {
                 var currentUser = this.User.Identity.GetUserId();
                 var property = this.propertyService.CreateProperty(model, currentUser);
-                
-                //TODO: fix this
-                //if (upload != null && upload.ContentLength > 0)
-                //{
-                //    if (property.Files.Any(f => f.FileType == FileType.Avatar))
-                //    {
-                //        property.Files.Remove(property.Files.First(f => f.FileType == FileType.Avatar));
-                //    }
-                //    var avatar = new File
-                //    {
-                //        FileName = System.IO.Path.GetFileName(upload.FileName),
-                //        FileType = FileType.Avatar,
-                //        ContentType = upload.ContentType
-                //    };
-                //    var reader = new System.IO.BinaryReader(upload.InputStream);
-                //    
-                //    avatar.Content = reader.ReadBytes(upload.ContentLength);
-                //    
-                //    property.Files = new List<File> { avatar };
-                //}
 
-                this.modifiableProperties.Update(property);
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var avatar = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    property.Files = new List<File> { avatar };
+                }
+
+                this.modifiableProperties.Add(property);
+                var propertyForDelete = this.realDeleteProperties.All().Where(p => p.Id == model.Id).FirstOrDefault();
+                this.realDeleteProperties.Delete(propertyForDelete);
                 this.modifiableProperties.SaveChanges();
-
+                this.realDeleteProperties.SaveChanges();
                 return RedirectToAction("MyAds", "Properties");
             }
 

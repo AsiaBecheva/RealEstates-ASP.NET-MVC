@@ -20,5 +20,7 @@
         public decimal Price { get; set; }
 
         public ICollection<File> Files { get; set; }
+
+        public User Author { get; set; }
     }
 }

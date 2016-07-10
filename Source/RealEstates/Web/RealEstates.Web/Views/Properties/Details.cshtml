@@ -20,7 +20,10 @@
         <div style="word-wrap: break-word">
             <strong>Description: </strong> @Model.Description
         </div>
-        <a href="/Properties/Edit/@Model.Id" class="btn btn-success">Edit</a>
+        @if (User.Identity.GetUserId() == Model.Author.Id)
+        {
+            <a href="/Properties/Edit/@Model.Id" class="btn btn-success">Edit</a>
+        }
     </div>
     <div class="col-md-4">
         @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
