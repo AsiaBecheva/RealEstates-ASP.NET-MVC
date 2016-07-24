@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<RealEstates.Web.Models.Properties.MyAdsViewModel>
 
-<div class="row">
+<div class="row" style="background-color:black;">
     <div class="col-md-2"></div>
     <div style="background-color:white;" class="col-md-8">
         @foreach (var property in Model)
         {
             <div class="row">
-                <div class="col-md-9">
-                    <div class="media">
+                <div class="col-md-12">
+                    <div class="media" style="margin-top:10px;">
                         <a class="media-left" href="#">
                             @if (property.Files.Any(f => f.FileType == FileType.Avatar))
                             {
@@ -78,13 +78,14 @@
                                 <a class="btn btn-xs" style="margin-top:15px" href="/Properties/Details/@property.Id">See details..</a>
                             </div>
                         </div>
+                        <hr />
                     </div>
-                    <hr />
+                    
                 </div>
             </div>
         }
     </div>
 </div>
 
-    <a class="btn btn-danger btn-lg" href="/Properties/Add" style="margin-left:170px">New advertisement</a>
+    <a class="btn btn-default btn-lg" href="/Properties/Add" style="margin-left:470px">New advertisement</a>
 

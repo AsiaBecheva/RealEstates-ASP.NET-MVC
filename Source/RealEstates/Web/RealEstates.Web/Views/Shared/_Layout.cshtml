@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="shortcut icon" href="~/images/icon.jpg" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
@@ -58,7 +59,7 @@
                     @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
                     {
                         <div class="dropdown">
-                            <li class="dropbtn">@Html.ActionLink("My Ads", "MyAds", "Properties", new { area = string.Empty }, null)</li>
+                            <li class="dropbtn" id="myAds">@Html.ActionLink("My Ads", "MyAds", "Properties", new { area = string.Empty }, null)</li>
                         </div>
                     }
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))

@@ -1,48 +1,50 @@
 ﻿@model RealEstates.Data.Models.Property
 
-@using (Html.BeginForm("Edit", "Properties", null, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary("", new { @class = "text-danger" })
+<div class="jumbotron">
+    @using (Html.BeginForm("Edit", "Properties", null, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
 
-    @Html.EditorFor(m => m.Title)
-    @Html.EditorFor(m => m.PropertyType)
-    @Html.EditorFor(m => m.PropertyStatus)
-    @Html.EditorFor(m => m.Sity)
-    @Html.EditorFor(m => m.Description)
-    <div class="row">
-        <div class="form-group">
-            @Html.LabelFor(m => m.Price, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        @Html.EditorFor(m => m.Title)
+        @Html.EditorFor(m => m.PropertyType)
+        @Html.EditorFor(m => m.PropertyStatus)
+        @Html.EditorFor(m => m.Sity)
+        @Html.EditorFor(m => m.Description)
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Price, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                </div>
             </div>
         </div>
-    </div>
 
-    if (Model.Files.Any(f => f.FileType == FileType.Avatar))
-    {
+        if (Model.Files.Any(f => f.FileType == FileType.Avatar))
+        {
+            <div class="form-group">
+                <span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+                <div class="col-md-10">
+                    <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" style="height:300px;" />
+                </div>
+            </div>
+        }
+
         <div class="form-group">
-            <span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+            @Html.Label("Avatar", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" />
+                <input type="file" id="Avatar" name="upload" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2 control-label"></div>
+            <div class="col-md-10">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+                <a href="/Properties/MyAds" class="btn btn-default">Cancel</a>
             </div>
         </div>
     }
-
-    <div class="form-group">
-        @Html.Label("Avatar", new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="file" id="Avatar" name="upload" />
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-2 control-label"></div>
-        <div class="col-md-10">
-            <input type="submit" value="Save Changes" class="btn btn-primary" />
-            <a href="/Properties/MyAds" class="btn btn-default">Cancel</a>
-        </div>
-    </div>
-}
+</div>
 
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")

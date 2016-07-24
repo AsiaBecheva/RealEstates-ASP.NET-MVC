@@ -237,6 +237,7 @@
     <Content Include="Areas\Administration\Views\PropertiesAdmin\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\PropertiesAdmin\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="images\icon.jpg" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />

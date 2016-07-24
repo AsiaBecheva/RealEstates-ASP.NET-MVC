@@ -1,9 +1,8 @@
 ﻿@model RealEstates.Web.Models.Properties.PropertyDetailsViewModel
 
 
-<div class="row" style="background-color:white;">
-    <div class="col-md-2"></div>
-    <div class="col-md-3" style="margin-bottom:30px">
+<div class="row jumbotron">
+    <div class="col-md-3 col-md-offset-1" style="margin-bottom:30px">
         <div>
             <h2 style="word-wrap:break-word">@Model.Title</h2>
         </div>
@@ -33,7 +32,7 @@
     <div class="col-md-6">
         @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
         {
-            <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" style="width:350px; height:350px; margin-top:30px;margin-bottom:30px" />
+            <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" style=" height:350px; margin-top:10px;margin-bottom:20px; margin-left:30px" />
         }
     </div>
 </div>

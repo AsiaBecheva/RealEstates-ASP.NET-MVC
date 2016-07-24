@@ -1,5 +1,5 @@
 body {
-    background-color:lightblue;
+    background-color:white;
     background-size: 100%;
     height: 140px;
     display: block;
@@ -26,13 +26,13 @@ nav {
     margin: 10px;
     font-size: 1.1em;
     font-family:'Times New Roman';
-    background-color:steelblue;
+    background-color:black;
 }
 
 .dropbtn {
     padding: 5px 20px 5px 20px;
     border: none;
-    background-color:steelblue;
+    background-color:black;
     margin-left:10px;
     color: aliceblue;
 }
@@ -43,7 +43,7 @@ li.dropbtn a{
 }
 
 .dropbtn:hover {
-    background-color:cornflowerblue;
+    border: 1px solid white;
 }
 
 .dropdown {
@@ -55,7 +55,7 @@ li.dropbtn a{
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color:steelblue;
+    background-color:black;
     min-width: 60px;
 }
 
@@ -67,8 +67,8 @@ li.dropbtn a{
 }
 
 .dropdown-content a:hover {
-    background-color: cornflowerblue;
-    color: white;
+    background-color:black;
+    border: 1px solid white;
 }
 
 .dropdown:hover .dropdown-content {
@@ -85,6 +85,10 @@ li.dropbtn a{
     margin-left: 50px;
 }
 
+#myAds{
+    text-decoration:none;
+}
+
 .info {
     padding: 30px;
     margin-left: 50px;
@@ -93,6 +97,26 @@ li.dropbtn a{
 .login {
     margin-top: 5px;
     float: right;
+}
+
+#registerLink:hover{
+    color:white;
+    border:1px solid white;
+}
+
+#loginLink:hover{
+    color:white;
+    border:1px solid white;
+}
+
+.logOff:hover{
+    color:white;
+    border:1px solid white;
+}
+
+#hello:hover{
+    color:white;
+    border:1px solid white;
 }
 
 .register {
