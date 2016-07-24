@@ -1,0 +1,59 @@
+﻿
+@model RealEstates.Web.Models.Home.PropertySearchModel
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+<div class="row">
+
+        <div class="form-horizontal">
+            <div class="col-lg-3">
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @placeholder = "Product Name" })
+            </div>
+            <div class="col-lg-3">
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control", @placeholder = "Price (max.)" })
+            </div>
+            <div class="col-lg-3">
+                @Html.EditorFor(m => m.Sity)
+            </div>
+            <div class="col-lg-3">
+                <button type="submit" class="btn btn-success" style="margin-left:20px; margin-top:8px;">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+
+                <a class="btn btn-success" data-modal="" href="/Create" id="btnCreate" style="margin-top:8px">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:17px;">
+        @{
+            var grid = new WebGrid(
+                                canPage: true,
+                                rowsPerPage: Model.PageSize,
+                                canSort: true,
+                                ajaxUpdateContainerId: "grid");
+
+            grid.Bind(Model.Properties, rowCount: Model.TotalRecords, autoSortAndPage: false);
+            grid.Pager(WebGridPagerModes.All);
+
+            @grid.GetHtml(htmlAttributes: new { id = "grid" },
+        fillEmptyRows: false,
+        tableStyle: "table table-bordered table-hover",
+        mode: WebGridPagerModes.All,
+        columns: grid.Columns(
+              grid.Column("Id", "ID"),
+              grid.Column("Title", "Title", style: "col-lg-6"),
+              grid.Column("Price", header: "Price", format: @<text>@String.Format("{0:C}", item.Price) </text>),
+              grid.Column("Sity", "Sity", style: "col-lg-2"),
+              grid.Column(header: "Action", canSort: false, style: "action",
+                format: @<text>
+                @Html.Raw("<a data-modal='' href='/products/details/" + item.ProductId + "' id='" + item.ProductId + "' title='Detail'> <span class='glyphicon glyphicon-search'> </span> </a>")
+                @Html.Raw("<a data-modal='' href='/products/edit/" + item.ProductId + "' id='" + item.ProductId + "' title='Edit'> <span class='glyphicon glyphicon-edit'> </span> </a>")
+                @Html.Raw("<a data-modal='' href='/products/delete/" + item.ProductId + "' id='" + item.ProductId + "' title='Delete'> <span class='glyphicon glyphicon-trash'> </span> </a>")
+                </text>)
+        ))      ;
+}
+    </div>
+            }

@@ -200,6 +200,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Home\PropertySearchModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Home\PropertyViewModel.cs" />
     <Compile Include="Models\Properties\AddPropertyViewModel.cs" />
@@ -271,7 +272,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\MultipleSearch.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -313,6 +314,7 @@
     <Content Include="Views\Properties\Edit.cshtml" />
     <Content Include="Views\Properties\ViewInactive.cshtml" />
     <Content Include="Views\Properties\ViewActive.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />

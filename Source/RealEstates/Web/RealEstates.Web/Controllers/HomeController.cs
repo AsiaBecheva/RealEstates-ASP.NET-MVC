@@ -9,6 +9,7 @@
     using AutoMapper.QueryableExtensions;
     using Models.Home;
     using Infrastructure.Mapping;
+
     public class HomeController : Controller
     {
         private IHomeService homeService;
@@ -25,7 +26,51 @@
         //[OutputCache(Duration = 60 * 10)]  
         public ActionResult Index()
         {
-            return View(this.homeService.GetAllHomeViewModel());
+            var allProperties = this.properties
+                .All()
+                .Where(x => x.IsDeleted == false)
+                .OrderByDescending(p => p.CreatedOn)
+                .Take(25)
+                .To<PropertyViewModel>()
+                .ToList();
+
+            return View(allProperties);
+        }
+
+        public ActionResult MultipleSearch(PropertySearchModel model)
+        {
+            model.Properties = this.properties
+            .All()
+            .Where(x =>
+            (x.Title == null || x.Title.Contains(model.Title))
+            && (model.Price == 0 || x.Price < model.Price)
+            && (x.Sity == model.Sity)
+            && (x.IsDeleted == false))
+            .OrderByDescending(p => p.CreatedOn)
+            .Skip((model.Page - 1) * model.PageSize)
+            .Take(model.PageSize)
+            .ToList();
+
+            model.TotalRecords = this.properties
+            .All()
+            .Count(x =>
+            (x.Title == null || x.Title.Contains(model.Title))
+            && (model.Price == 0 || x.Price < model.Price)
+            && (x.Sity == model.Sity));
+
+            return View(model);
+        }
+        
+
+        public ActionResult Search(string query)
+        {
+            var result = this.properties
+                .All()
+                .Where(p => p.Title.ToLower().Contains(query.ToLower()))
+                .To<PropertyViewModel>()
+                .ToList();
+
+            return PartialView("_PropertyResult", result);
         }
 
         //[OutputCache(Duration = 60 * 10)]
@@ -64,17 +109,6 @@
         public ActionResult Restaurants()
         {
             return View(this.homeService.GetHomeViewModel("Restaurant"));
-        }
-
-        public ActionResult Search(string query)
-        {
-            var result = this.properties
-                .All()
-                .Where(p => p.Title.ToLower().Contains(query.ToLower()))
-                .To<PropertyViewModel>()
-                .ToList();
-
-            return PartialView("_PropertyResult", result);
         }
 
         public ActionResult Error()
