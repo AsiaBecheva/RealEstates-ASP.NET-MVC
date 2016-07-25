@@ -318,7 +318,6 @@
     <Content Include="Views\Properties\Edit.cshtml" />
     <Content Include="Views\Properties\ViewInactive.cshtml" />
     <Content Include="Views\Properties\ViewActive.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />

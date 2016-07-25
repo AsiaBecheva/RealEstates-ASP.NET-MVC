@@ -9,9 +9,9 @@
                     <th>User</th>
                     <th>Title</th>
                     <th>Created on</th>
-                    <th>Edit</th>
-                    <th>Details</th>
-                    <th>Delete</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
 
@@ -22,9 +22,9 @@
                     <td style="word-break:break-word">@item.Author.Email</td>
                     <td style="word-break:break-word">@item.Title</td>
                     <td>@item.CreatedOn</td>
-                    <td><a href="PropertiesAdmin/Edit/@item.Id" class="btn btn-warning btn-xs">edit</a></td>
-                    <td><a href="PropertiesAdmin/Details/@item.Id" class="btn btn-success btn-xs">details</a></td>
-                    <td><a href="PropertiesAdmin/Delete/@item.Id" class="btn btn-danger btn-xs">delete</a></td>
+                    <td><a href="PropertiesAdmin/Edit/@item.Id" class='glyphicon glyphicon-pencil' title="Edit"></a></td>
+                    <td><a href="PropertiesAdmin/Details/@item.Id" class='glyphicon glyphicon-zoom-in' title="Details"></a></td>
+                    <td><a href="PropertiesAdmin/Delete/@item.Id" class='glyphicon glyphicon-trash' title="Delete"></a></td>
                 </tr>
             }
         </table>

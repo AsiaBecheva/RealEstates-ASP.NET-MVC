@@ -1,10 +1,13 @@
 ﻿@model RealEstates.Web.Models.Properties.PropertyDetailsViewModel
 
-<h2>@Model.Title</h2>
-
-<h3>@Model.Sity</h3>
-<div class="row">
-    <div class="col-md-4">
+<div class="row jumbotron">
+    <div class="col-md-3 col-md-offset-1" style="margin-bottom:30px">
+        <div>
+            <h2 style="word-wrap:break-word">@Model.Title</h2>
+        </div>
+        <div>
+            <h3><strong>@Model.Sity</strong></h3>
+        </div>
         <div>
             <strong>Property Id: </strong> @Model.Id
         </div>
@@ -20,12 +23,11 @@
         <div style="word-wrap: break-word">
             <strong>Description: </strong> @Model.Description
         </div>
-        <a href="/Properties/Edit/@Model.Id" class="btn btn-success">Edit</a>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
         {
-            <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" />
+            <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" style="height:350px; margin-top:10px;margin-bottom:20px; margin-left:30px" />
         }
     </div>
 </div>
