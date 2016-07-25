@@ -32,7 +32,7 @@
     <div class="col-md-6">
         @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
         {
-            <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" style=" height:350px; margin-top:10px;margin-bottom:20px; margin-left:30px" />
+            <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" style="height:350px; margin-top:10px;margin-bottom:20px; margin-left:30px" />
         }
     </div>
 </div>

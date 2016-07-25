@@ -1,5 +1,5 @@
 ﻿
-@model RealEstates.Web.Models.Home.PropertySearchModel
+@model RealEstates.Data.Models.Property
 
 @using (Html.BeginForm("Index", "Home", FormMethod.Get))
 {
@@ -7,7 +7,7 @@
 
         <div class="form-horizontal">
             <div class="col-lg-3">
-                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @placeholder = "Product Name" })
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @placeholder = "Property title" })
             </div>
             <div class="col-lg-3">
                 @Html.TextBoxFor(m => m.Price, new { @class = "form-control", @placeholder = "Price (max.)" })
@@ -20,7 +20,7 @@
                     <span class="glyphicon glyphicon-search"></span>
                 </button>
 
-                <a class="btn btn-success" data-modal="" href="/Create" id="btnCreate" style="margin-top:8px">
+                <a class="btn btn-success" href="/Properties/Add" id="btnCreate" style="margin-top:8px">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
@@ -46,14 +46,7 @@
               grid.Column("Id", "ID"),
               grid.Column("Title", "Title", style: "col-lg-6"),
               grid.Column("Price", header: "Price", format: @<text>@String.Format("{0:C}", item.Price) </text>),
-              grid.Column("Sity", "Sity", style: "col-lg-2"),
-              grid.Column(header: "Action", canSort: false, style: "action",
-                format: @<text>
-                @Html.Raw("<a data-modal='' href='/products/details/" + item.ProductId + "' id='" + item.ProductId + "' title='Detail'> <span class='glyphicon glyphicon-search'> </span> </a>")
-                @Html.Raw("<a data-modal='' href='/products/edit/" + item.ProductId + "' id='" + item.ProductId + "' title='Edit'> <span class='glyphicon glyphicon-edit'> </span> </a>")
-                @Html.Raw("<a data-modal='' href='/products/delete/" + item.ProductId + "' id='" + item.ProductId + "' title='Delete'> <span class='glyphicon glyphicon-trash'> </span> </a>")
-                </text>)
-        ))      ;
+              grid.Column("Sity", "Sity", style: "col-lg-2")))      
 }
     </div>
             }

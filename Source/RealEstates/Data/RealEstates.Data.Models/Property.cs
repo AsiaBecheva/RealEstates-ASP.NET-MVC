@@ -10,6 +10,10 @@
         public Property()
         {
             this.CreatedOn = DateTime.Now;
+            Page = 1;
+            PageSize = 5;
+            Sort = this.Id;
+            SortDir = "DESC";
         }
 
         [Key]
@@ -43,5 +47,12 @@
         public DateTime? DeletedOn { get; set; }
 
         public virtual ICollection<File> Files { get; set; }
+
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+        public int Sort { get; set; }
+        public string SortDir { get; set; }
+        public int TotalRecords { get; set; }
+        public List<Property> Properties { get; set; }
     }
 }

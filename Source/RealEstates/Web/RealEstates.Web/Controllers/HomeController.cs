@@ -6,7 +6,7 @@
     using Data.Models;
     using System;
     using System.Linq;
-    using AutoMapper.QueryableExtensions;
+    using System.Linq.Dynamic;
     using Models.Home;
     using Infrastructure.Mapping;
 
@@ -37,7 +37,21 @@
             return View(allProperties);
         }
 
-        public ActionResult MultipleSearch(PropertySearchModel model)
+        public ActionResult MultipleSearch(Property model)
+        {
+            model.Properties = this.properties
+            .All()
+            .ToList();
+
+            model.TotalRecords = this.properties
+            .All()
+            .Count();
+
+            return View(model);
+        }
+
+        //to fix this
+        public ActionResult MultipleSearchResult(Property model)
         {
             model.Properties = this.properties
             .All()
@@ -46,6 +60,7 @@
             && (model.Price == 0 || x.Price < model.Price)
             && (x.Sity == model.Sity)
             && (x.IsDeleted == false))
+            .OrderBy(model.Sort + " " + model.SortDir)
             .OrderByDescending(p => p.CreatedOn)
             .Skip((model.Page - 1) * model.PageSize)
             .Take(model.PageSize)
