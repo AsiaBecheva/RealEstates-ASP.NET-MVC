@@ -41,6 +41,11 @@
         {
             model.Properties = this.properties
             .All()
+            .Where(x => x.IsDeleted == false)
+            .OrderBy(model.Sort + " " + model.SortDir)
+            .OrderByDescending(p => p.CreatedOn)
+            .Skip((model.Page - 1) * model.PageSize)
+            .Take(model.PageSize)
             .ToList();
 
             model.TotalRecords = this.properties
@@ -58,8 +63,7 @@
             .Where(x =>
             (x.Title == null || x.Title.Contains(model.Title))
             && (model.Price == 0 || x.Price < model.Price)
-            && (x.Sity == model.Sity)
-            && (x.IsDeleted == false))
+            && (x.Sity == model.Sity))
             .OrderBy(model.Sort + " " + model.SortDir)
             .OrderByDescending(p => p.CreatedOn)
             .Skip((model.Page - 1) * model.PageSize)
