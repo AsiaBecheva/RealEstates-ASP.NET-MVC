@@ -43,13 +43,13 @@
         tableStyle: "table table-bordered table-hover",
         mode: WebGridPagerModes.All,
         columns: grid.Columns(
-              grid.Column("Id", "ID"),
+              grid.Column("Id", "Id"),
               grid.Column("Title", "Title", style: "col-lg-6"),
               grid.Column("Price", header: "Price", format: @<text>@String.Format("{0:C}", item.Price) </text>),
               grid.Column("Sity", "Sity", style: "col-lg-2"),
               grid.Column(canSort: false, style: "col-lg-1",
                 format: @<text>
-                @Html.Raw("<a href='/Properties/Details/" + Model.Id + "' id='" + "'ID'" + "' title='Detail'> <span class='glyphicon glyphicon-zoom-in'> </span> </a>")
+                @Html.Raw("<a href='/Properties/Details/" +  item.Id + "' id='" + item.Id + "' title='Detail'> <span class='glyphicon glyphicon-zoom-in'> </span> </a>")
                 </text>)
         ));
 }

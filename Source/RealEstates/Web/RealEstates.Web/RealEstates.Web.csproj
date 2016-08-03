@@ -258,7 +258,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\myAds.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
@@ -317,8 +316,6 @@
     <Content Include="Views\Shared\_PropertyResult.cshtml" />
     <Content Include="Views\Shared\_NoResults.cshtml" />
     <Content Include="Views\Properties\Edit.cshtml" />
-    <Content Include="Views\Properties\ViewInactive.cshtml" />
-    <Content Include="Views\Properties\ViewActive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />
